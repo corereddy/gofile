@@ -87,7 +87,7 @@ def main():
         else:
             fail_count += 1
             report_lines.append(f"[FAILURE] {name} ({link}) -> {details}")
-        time.sleep(2)
+        time.sleep(5)
 
     # Finalize report summary
     report_lines.insert(2, f"Summary: {success_count} Succeeded, {fail_count} Failed\n" + "-"*40)
