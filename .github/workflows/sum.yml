@@ -22,7 +22,8 @@ jobs:
     - name: Execute script file
       id: run_script
       env:
-        RAW_URL_API: ${{ secrets.DATA_URL }}
+        DATA_URL: ${{ secrets.DATA_URL }}
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
       run: |
         # Run script, capture output to terminal AND log file simultaneously
         python go.py
