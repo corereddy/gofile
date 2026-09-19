@@ -1,0 +1,27 @@
+name: Scheduled Python Run
+
+on:  
+  workflow_dispatch: # Allows you to also trigger the script manually from GitHub
+
+jobs:
+  run-periodic-task:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    - name: Configure Python environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+
+    - name: Execute script file
+      id: run_script
+      env:
+        RAW_URL_API: ${{ secrets.DATA_URL }}
+      run: |
+        # Run script, capture output to terminal AND log file simultaneously
+        python secure.py 2>&1 | tee script_output.log
